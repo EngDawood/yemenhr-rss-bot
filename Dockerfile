@@ -18,18 +18,19 @@ FROM python:3.13-bookworm AS dep-builder-common
 
 ENV PATH="/opt/venv/bin:$PATH"
 
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.cargo/bin:/opt/venv/bin:$PATH"
+
 RUN \
     set -ex && \
-    python -m venv --copies /opt/venv && \
-    python -m pip install --no-cache-dir --upgrade \
-        pip setuptools wheel
+    python -m venv --copies /opt/venv
 
 COPY requirements.txt .
 
 RUN \
     set -ex && \
     export MAKEFLAGS="-j$((`nproc`+1))" && \
-    pip install --no-cache-dir \
+    uv pip install --no-cache-dir \
         -r requirements.txt \
     && \
     rm -rf /opt/venv/src
@@ -38,13 +39,15 @@ RUN \
 
 FROM python:3.13-bookworm AS dep-builder
 
-ENV PATH="/opt/venv/bin:$PATH"
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.cargo/bin:/opt/venv/bin:$PATH"
+
 ARG EXP_REGEX='^([^~=<>]+)[^#]*#\s*(\1@.+)$'
 
 COPY requirements.txt .
 RUN \
     set -ex && \
-    pip wheel --no-cache-dir --no-deps \
+    uv pip wheel --no-cache-dir --no-deps \
         $(sed -nE "s/$EXP_REGEX/\2/p" requirements.txt)
 
 COPY --from=dep-builder-common /opt/venv /opt/venv
@@ -54,11 +57,11 @@ RUN \
     set -ex && \
     if [ "$EXP_DEPS" = 1 ]; then \
         AFFECTED_PKGS=$(sed -nE "s/$EXP_REGEX/\1/p" requirements.txt); \
-        pip uninstall -y $AFFECTED_PKGS && \
+        uv pip uninstall -y $AFFECTED_PKGS && \
         for pkg in $AFFECTED_PKGS; do \
             sed -Ei "s#$pkg.*#$(find . -iname "${pkg}-*.whl")#" requirements.txt; \
         done; \
-        pip install --no-cache-dir \
+        uv pip install --no-cache-dir \
             -r requirements.txt \
         ; \
     fi;
