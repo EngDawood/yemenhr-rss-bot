@@ -242,7 +242,7 @@ icon/
 *.bak
 docker-compose*.yml
 docker-compose*.yaml
-Dockerfile
+#Dockerfile
 .version
 *.gemini/
 *.qwen/
