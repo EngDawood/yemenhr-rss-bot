@@ -63,7 +63,7 @@
 - Optimized performance (see also the [FAQ](docs/FAQ.md#q-how-is-the-performance-of-the-bot))
 - User-friendly
 - HTTP Caching
-
+- Free and open source (AGPLv3+)
 ## Deployment
 
 [![dockeri.co](https://dockerico.blankenship.io/image/rongronggg9/rss-to-telegram)](https://hub.docker.com/r/rongronggg9/rss-to-telegram)\

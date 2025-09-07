@@ -18,7 +18,7 @@ FROM python:3.13-bookworm AS dep-builder-common
 
 ENV PATH="/opt/venv/bin:$PATH"
 
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
 ENV PATH="/root/.cargo/bin:/opt/venv/bin:$PATH"
 
 RUN \
@@ -39,7 +39,7 @@ RUN \
 
 FROM python:3.13-bookworm AS dep-builder
 
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
 ENV PATH="/root/.cargo/bin:/opt/venv/bin:$PATH"
 
 ARG EXP_REGEX='^([^~=<>]+)[^#]*#\s*(\1@.+)$'
