@@ -25,8 +25,9 @@ RUN \
     set -ex && \
     python -m venv --copies /opt/venv
 
-# Install uv first
-RUN pip install --no-cache-dir uv
+# Install pip and uv
+RUN python -m ensurepip --upgrade && \
+    pip install --no-cache-dir uv
 
 COPY requirements.txt .
 
@@ -47,14 +48,14 @@ ENV PATH="/root/.cargo/bin:/opt/venv/bin:$PATH"
 
 ARG EXP_REGEX='^([^~=<>]+)[^#]*#\s*(\1@.+)'
 
-# >>> add this single line >>>>
-RUN pip install --no-cache-dir uv
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<
+# Install pip and uv
+RUN python -m ensurepip --upgrade && \
+    pip install --no-cache-dir uv
 
 COPY requirements.txt .
 RUN \
     set -ex && \
-    uv pip wheel --no-cache-dir --no-deps \
+    pip wheel --no-cache-dir --no-deps \
         $(sed -nE "s/$EXP_REGEX/\2/p" requirements.txt)
 
 COPY --from=dep-builder-common /opt/venv /opt/venv
