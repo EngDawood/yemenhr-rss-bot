@@ -25,12 +25,15 @@ RUN \
     set -ex && \
     python -m venv --copies /opt/venv
 
+# Install uv first
+RUN pip install --no-cache-dir uv
+
 COPY requirements.txt .
 
 RUN \
     set -ex && \
     export MAKEFLAGS="-j$((`nproc`+1))" && \
-    pip install --no-cache-dir \
+    uv pip install --no-cache-dir \
         -r requirements.txt \
     && \
     rm -rf /opt/venv/src
@@ -42,7 +45,8 @@ FROM python:3.13-bookworm AS dep-builder
 
 ENV PATH="/root/.cargo/bin:/opt/venv/bin:$PATH"
 
-ARG EXP_REGEX='^([^~=<>]+)[^#]*#\s*(\1@.+)$'
+ARG EXP_REGEX='^([^~=<>]+)[^#]*#\s*(\1@.+)'
+
 # >>> add this single line >>>>
 RUN pip install --no-cache-dir uv
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -50,7 +54,7 @@ RUN pip install --no-cache-dir uv
 COPY requirements.txt .
 RUN \
     set -ex && \
-    pip wheel --no-cache-dir --no-deps \
+    uv pip wheel --no-cache-dir --no-deps \
         $(sed -nE "s/$EXP_REGEX/\2/p" requirements.txt)
 
 COPY --from=dep-builder-common /opt/venv /opt/venv
@@ -64,7 +68,7 @@ RUN \
         for pkg in $AFFECTED_PKGS; do \
             sed -Ei "s#$pkg.*#$(find . -iname "${pkg}-*.whl")#" requirements.txt; \
         done; \
-        pip install --no-cache-dir \
+        uv pip install --no-cache-dir \
             -r requirements.txt \
         ; \
     fi;
