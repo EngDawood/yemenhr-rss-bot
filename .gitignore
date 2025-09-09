@@ -247,3 +247,7 @@ docker-compose*.yaml
 *.gemini/
 *.qwen/
 *.clinerules/
+*-workspace
+.vscode/
+*.log
+.yemen-hr/

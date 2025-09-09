@@ -126,8 +126,8 @@ RSS to Telegram Bot (RSStT) is a Python-based Telegram bot that fetches RSS feed
 
 The bot is configured using environment variables. The main required variables are:
 
-- `TOKEN`: Telegram bot token from @BotFather
-- `MANAGER`: Telegram user ID from @userinfobot (can be a list)
+- `TOKEN`: Telegram bot token from [@BotFather](https://t.me/BotFather) (you need to create a new bot with the `/newbot` command and obtain its token)
+- `MANAGER`: Telegram user ID from [@userinfobot](https://t.me/userinfobot) (you need to start a chat with this bot to get your user ID; can be a list of IDs separated by semicolons)
 
 Optional but recommended:
 - `TELEGRAPH_TOKEN`: Telegraph API access tokens for sending long posts

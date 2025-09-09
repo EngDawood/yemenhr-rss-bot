@@ -83,6 +83,10 @@ It is quite easy to deploy your RSStT instance. The most recommended way to depl
 
 For more details, refer to the [deployment guide](docs/deployment-guide.md).
 
+## Supabase PostgreSQL Database Setup
+
+This project includes a Docker Compose configuration that sets up a local PostgreSQL database for development and testing purposes. See [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for detailed instructions on how to use this setup.
+
 ## Translation
 
 Read the translation guide [here](docs/translation-guide.md).

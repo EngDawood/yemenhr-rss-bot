@@ -12,3 +12,6 @@
 | [FAQ](FAQ.md)                                           | [FAQ](FAQ.zh.md)                        |
 | [CHANGELOG](CHANGELOG.md)                               | [更新日志](CHANGELOG.zh.md)                 |
 | [Channels Using RSStT](channels-using-rsstt.md)         | 使用 RSStT 的频道                            |
+| [Database Architecture](database-architecture.md)       | 数据库架构                                  |
+| [Database Migration Technical Guide](database-migration-technical.md) | 数据库迁移技术指南                        |
+| [Database User Guide](database-user-guide.md)           | 数据库用户指南                              |
