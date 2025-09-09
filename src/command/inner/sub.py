@@ -358,8 +358,7 @@ async def migrate_to_new_url(feed: db.Feed, new_url: str) -> Union[bool, db.Feed
 
 FeedLinkTypeMatcher = re.compile(r'(application|text)/(rss|rdf|atom)(\+xml)?', re.I)
 FeedLinkHrefMatcher = re.compile(r'(rss|rdf|atom)', re.I)
-FeedAHrefMatcher = re.compile(r'/(feed|rss|atom)(\.(xml|rss|atom))?
-, re.I)
+FeedAHrefMatcher = re.compile(r'/(feed|rss|atom)(\.(xml|rss|atom))?', re.I)
 FeedATextMatcher = re.compile(r'([^a-zA-Z]|^)(rss|atom)([^a-zA-Z]|$)', re.I)
 
 
