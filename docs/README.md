@@ -15,3 +15,4 @@
 | [Database Architecture](database-architecture.md)       | 数据库架构                                  |
 | [Database Migration Technical Guide](database-migration-technical.md) | 数据库迁移技术指南                        |
 | [Database User Guide](database-user-guide.md)           | 数据库用户指南                              |
+| [Default Subscriptions](default-subscriptions.md)       | 默认订阅                                    |

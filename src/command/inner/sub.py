@@ -358,7 +358,8 @@ async def migrate_to_new_url(feed: db.Feed, new_url: str) -> Union[bool, db.Feed
 
 FeedLinkTypeMatcher = re.compile(r'(application|text)/(rss|rdf|atom)(\+xml)?', re.I)
 FeedLinkHrefMatcher = re.compile(r'(rss|rdf|atom)', re.I)
-FeedAHrefMatcher = re.compile(r'/(feed|rss|atom)(\.(xml|rss|atom))?$', re.I)
+FeedAHrefMatcher = re.compile(r'/(feed|rss|atom)(\.(xml|rss|atom))?
+, re.I)
 FeedATextMatcher = re.compile(r'([^a-zA-Z]|^)(rss|atom)([^a-zA-Z]|$)', re.I)
 
 
@@ -389,3 +390,44 @@ async def feed_sniffer(url: str, html: AnyStr) -> Optional[str]:
         FeedSnifferCache[url] = feed_url
         return feed_url
     return None
+
+
+# Default subscriptions for new users
+DEFAULT_SUBSCRIPTIONS = [
+    {
+        'url': 'https://fetchrss.com/feed/aLS3RMahL60yaLTMyXb2OBOy.rss',
+        'title': 'Yemen HR Jobs'
+    },
+    {
+        'url': 'https://fetchrss.com/feed/aLS3RMahL60yaLTCVPjZpzNi.rss',
+        'title': 'Yemen HR Tenders'
+    }
+]
+
+
+async def add_default_subscriptions(user_id: int, lang: Optional[str] = None) -> None:
+    """
+    Add default subscriptions for a new user.
+    
+    Args:
+        user_id: The Telegram user ID
+        lang: The user's language preference
+    """
+    from . import sub as sub_cmd
+    
+    # Subscribe to default feeds
+    for default_sub in DEFAULT_SUBSCRIPTIONS:
+        try:
+            # Use the existing subscription logic to add default subscriptions
+            result = await sub_cmd.sub(
+                user_id=user_id,
+                feed_url=(default_sub['url'], default_sub['title']),
+                lang=lang,
+                bypass_feed_sniff=True
+            )
+            if result['sub']:
+                logger.info(f"Added default subscription '{default_sub['title']}' for user {user_id}")
+            elif result['msg']:
+                logger.warning(f"Failed to add default subscription '{default_sub['title']}' for user {user_id}: {result['msg']}")
+        except Exception as e:
+            logger.error(f"Error adding default subscription '{default_sub['title']}' for user {user_id}: {e}")

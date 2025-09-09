@@ -6,6 +6,7 @@
         "lang_native_name": "العربية",
         "select_lang_prompt": "الرجاء اختيار اللغة.",
         "welcome_prompt": "مرحبا بك في RSS to Telegram Bot.",
+        "default_subscriptions_added": "تمت إضافة الاشتراكات الافتراضية لوظائف اليمن وعطاءات اليمن إلى قائمتك. يمكنك إلغاء الاشتراك منها في أي وقت باستخدام الأوامر /list و /unsub.",
         "rsstt_slogan": "RSS to Telegram Bot, تليجرام بوت يهتم بتجربتك في القراءة."
     },
     "l10n_sub_status": {
@@ -18,15 +19,15 @@
         "url_invalid": "عنوان URL غير صحيح",
         "network_error": "خطأ في الشبكة",
         "internal_error": "خطأ داخلي",
-        "status_code_error": "HTTP status code error",
-        "uncaught_internal_error": "Uncaught internal error",
-        "operation_timeout_error": "انتهى وقت العملية",
-        "action_invalid": "الإجراء غير صحيح",
-        "sub_limit_reached": "تم بلوغ الحد الأقصى لعدد الإشتراكات",
-        "flood_wait_prompt": "أنت تقوم بالعديد من العمليات في وقت قصير لدرجة ان البوت قد تجاوز rate limit لـ Telegram. من فضلك تمهل.",
-        "edit_conflict_prompt": "أنت تقوم بالعديد من العمليات في وقت قصير حتى حدث تعارض. من فضلك تمهل.",
-        "callback_already_running_prompt": "لقد طلبت أمرًا آخر. الرجاء إعادة المحاولة بعد انتهائه.",
-        "message_too_long_prompt": "من المفترض أن الأمر تم تنفيذه بنجاح، لكن رسالة الإرجاع طويلة جدًا بحيث يتعذر إرسالها."
+        "status_code_error": "خطأ في رمز حالة HTTP",
+        "uncaught_internal_error": "خطأ داخلي غير مسجل",
+        "operation_timeout_error": "انتهت مهلة العملية",
+        "action_invalid": "إجراء غير صالح",
+        "sub_limit_reached": "تم الوصول إلى الحد الأقصى لعدد الاشتراكات",
+        "flood_wait_prompt": "أنت تعمل بشكل متكرر جداً بحيث تجاوز البوت حد معدل تيليجرام. يرجى تبطيء السرعة.",
+        "edit_conflict_prompt": "أنت تعمل بشكل متكرر جداً بحيث تتعارض العمليات. يرجى تبطيء السرعة.",
+        "callback_already_running_prompt": "لقد طلبت أمرًا آخر. يرجى المحاولة مرة أخرى بعد انتهاء الأمر.",
+        "message_too_long_prompt": "كان يجب تنفيذ الأمر بنجاح، ولكن رسالة العودة طويلة جدًا بحيث لا يمكن إرسالها."
     },
     "l10n_permission_denied_reasons": {
         "channel_or_group_not_found": "لم يتم العثور على القناة / المجموعة.",

@@ -65,16 +65,30 @@ async def callback_set_lang(
         chat_id: Optional[int] = None,
         **__,
 ):  # callback data: set_lang={lang_code}
+    from .inner import sub as inner_sub
+    
     chat_id = chat_id or event.chat_id
     lang, _ = parse_callback_data_with_page(event.data)
     welcome_msg = i18n[lang]['welcome_prompt']
-    await db.User.update_or_create(defaults={'lang': lang}, id=chat_id)
+    
+    # Create or update user and check if it's a new user
+    user, created = await db.User.update_or_create(defaults={'lang': lang}, id=chat_id)
+    
     await set_bot_commands(
         scope=types.BotCommandScopePeer(await event.get_input_chat()),
         lang_code='',
         commands=get_commands_list(lang=lang, manager=chat_id in env.MANAGER),
     )
-    logger.info(f'Changed language to {lang} for {chat_id}')
+    
+    # Add default subscriptions for new users
+    if created:
+        logger.info(f'New user {chat_id} created, adding default subscriptions')
+        # Add default subscriptions asynchronously to avoid blocking the response
+        env.loop.create_task(inner_sub.add_default_subscriptions(chat_id, lang))
+        welcome_msg += '\n\n' + i18n[lang]['default_subscriptions_added']
+    else:
+        logger.info(f'Changed language to {lang} for {chat_id}')
+    
     help_button = Button.inline(text=i18n[lang]['cmd_description_help'], data='help')
     await event.edit(welcome_msg, buttons=help_button)
 

@@ -6,6 +6,7 @@
         "lang_native_name": "English",
         "select_lang_prompt": "Please select a language.",
         "welcome_prompt": "Welcome to RSS to Telegram Bot.",
+        "default_subscriptions_added": "Default subscriptions for Yemen HR Jobs and Tenders have been added to your list. You can unsubscribe from them anytime using /list and /unsub commands.",
         "rsstt_slogan": "RSS to Telegram Bot, a Telegram RSS bot that cares about your reading experience."
     },
     "l10n_sub_status": {
