@@ -81,7 +81,7 @@ For more details, refer to the [deployment guide](docs/deployment-guide.md).
 
 ## Supabase PostgreSQL Database Setup
 
-This project includes a Docker Compose configuration that sets up a local PostgreSQL database for development and testing purposes. See [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for detailed instructions on how to use this setup.
+This project has been configured to use Supabase as the primary PostgreSQL database. The local PostgreSQL container has been removed in favor of the managed Supabase database service. See [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for the original local setup instructions, or refer to [Supabase Configuration Documentation](docs/supabase-configuration.md) for details on the current Supabase setup.
 
 ## Translation
 
@@ -122,4 +122,6 @@ This project is licensed under [AGPLv3+](LICENSE). Closed-source distribution or
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-The repository was forked from [Rongronggg9/RSS-to-Telegram-Bot](https://github.com/Rongronggg9/RSS-to-Telegram-Bot) in 2025.
+The repository was forked from [Rongronggg9/RSS-to-Telegram-Bot](https://github.com/Rongronggg9/RSS-to-Telegram-Bot) in 2025. 
+
+Join Us
