@@ -1,21 +1,23 @@
 {
-    "name": "RSS to Telegram Bot",
-    "description": "A Telegram RSS bot that cares about your reading experience",
-    "logo": "https://raw.githubusercontent.com/Rongronggg9/RSS-to-Telegram-Bot/dev/docs/resources/RSStT_icon.svg",
-    "repository": "https://github.com/Rongronggg9/RSS-to-Telegram-Bot",
-    "website": "https://t.me/RSStT_Channel",
+    "name": "yemenhr rss bot",
+    "description": "A Telegram RSS bot for Yemen jobs and tenders",
+    "logo": "https://raw.githubusercontent.com/EngDawood/yemenhr-rss-bot/dev/docs/resources/RSStT_icon.svg",
+    "repository": "https://github.com/EngDawood/yemenhr-rss-bot",
+    "website": "https://t.me/hr_yemen",
     "keywords": [
         "python",
         "RSS",
         "Telegram",
-        "bot"
+        "bot",
+        "yemen",
+        "jobs"
     ],
     "addons": [
         "heroku-postgresql"
     ],
     "env": {
         "TOKEN": {
-            "description": "Your bot token. Get it from @BotFather",
+            "description": "Your bot token. Get it from @Yemenhrbot",
             "required": true
         },
         "MANAGER": {
@@ -23,7 +25,7 @@
             "required": true
         },
         "TELEGRAPH_TOKEN": {
-            "description": "Telegraph API access token. Get it from https://api.telegra.ph/createAccount?short_name=RSStT&author_name=Generated%20by%20RSStT&author_url=https%3A%2F%2Fgithub.com%2FRongronggg9%2FRSS-to-Telegram-Bot",
+            "description": "Telegraph API access token. Get it from https://api.telegra.ph/createAccount?short_name=YemenHR&author_name=Generated%20by%20YemenHR&author_url=https%3A%2F%2Fgithub.com%2FEngDawood%2Fyemenhr-rss-bot",
             "required": false
         },
         "API_ID": {
