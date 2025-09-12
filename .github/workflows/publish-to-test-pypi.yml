@@ -1,12 +1,5 @@
 name: Publish to Test PyPI
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
-      - '**.sample'
   workflow_dispatch: ~
 jobs:
   build-n-publish:
@@ -29,6 +22,7 @@ jobs:
             sed -E \
               -e 's#^v##' \
               -e 's#([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)-([[:digit:]]+)(-.+)?#\1.post\2#g' \
+              -e 's#^([[:alnum:]]{7,})#0.0.0.post0.dev\1#g' \
               -e 's#^#__version__ = "#' \
               -e 's#$#"#' \
             >src/version.py

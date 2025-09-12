@@ -42,10 +42,10 @@ https://hosted.weblate.org/projects/rss-to-telegram-bot/
 ## Translators
 | Language                               | Translator(s)                           | Status                    |
 |----------------------------------------|-----------------------------------------|---------------------------|
-| [en] / English                         | [@Rongronggg9]                          | [![en_s]][en_w]           |
-| [zh-Hans] / Simplified Chinese / 简体中文  | [@Rongronggg9]                          | [![zh_Hans_s]][zh_Hans_w] |
-| [zh-Hant] / Traditional Chinese / 正體中文 | [@Rongronggg9]                          | [![zh_Hant_s]][zh_Hant_w] |
-| [yue] / Cantonese / 廣東話                | [@Rongronggg9]                          | [![yue_s]][yue_w]         |
+| [en] / English                         | [@EngDawood]                          | [![en_s]][en_w]           |
+| [zh-Hans] / Simplified Chinese / 简体中文  | [@EngDawood]                          | [![zh_Hans_s]][zh_Hans_w] |
+| [zh-Hant] / Traditional Chinese / 正體中文 | [@EngDawood]                          | [![zh_Hant_s]][zh_Hant_w] |
+| [yue] / Cantonese / 廣東話                | [@EngDawood]                          | [![yue_s]][yue_w]         |
 | [it] / Italian / Italiano              | [@Alfy] ([@AlfyT96])                    | [![it_s]][it_w]           |
 | [ca] / Catalan / Català                | [@maite.guix]                           | [![ca_s]][ca_w]           |
 | [tr] / Turkish / Türkçe                | [@wiseweb-works]                        | [![tr_s]][tr_w]           |
@@ -112,7 +112,7 @@ https://hosted.weblate.org/projects/rss-to-telegram-bot/
 [ja_w]: https://hosted.weblate.org/engage/rss-to-telegram-bot/ja/
 [eu_w]: https://hosted.weblate.org/engage/rss-to-telegram-bot/eu/
 
-[@Rongronggg9]: https://github.com/Rongronggg9
+[@EngDawood]: https://github.com/EngDawood
 [@Alfy]: https://hosted.weblate.org/user/Alfy/
 [@AlfyT96]: https://t.me/AlfyT96
 [@maite.guix]: https://hosted.weblate.org/user/maite.guix/
