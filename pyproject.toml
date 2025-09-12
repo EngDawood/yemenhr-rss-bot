@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "yemenhr"
-version = "0.1.0"
+dynamic = ["version"]
 
 description = "YemenHR - A Telegram RSS bot for Yemen jobs and tenders"
 readme = "README.md"
@@ -80,6 +80,15 @@ dependencies = [
 Homepage = "https://github.com/EngDawood/yemenhr-rss-bot"
 Source = "https://github.com/EngDawood/yemenhr-rss-bot"
 Issues = "https://github.com/EngDawood/yemenhr-rss-bot/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "version.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+yemenhr = "src"
 
 [tool.setuptools-declarative-requirements]
 requirements-files = ["requirements.txt"]
