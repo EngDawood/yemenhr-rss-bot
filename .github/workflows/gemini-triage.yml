@@ -8,6 +8,9 @@ on:
         description: 'Any additional context from the request'
         required: false
 
+# Temporarily disabled - requires Google Cloud setup
+if: false
+
 concurrency:
   group: '${{ github.workflow }}-triage-${{ github.event_name }}-${{ github.event.pull_request.number || github.event.issue.number }}'
   cancel-in-progress: true
