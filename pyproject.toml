@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools-declarative-requirements"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "yemenhr"
@@ -8,7 +8,7 @@ dynamic = ["version"]
 
 description = "YemenHR - A Telegram RSS bot for Yemen jobs and tenders"
 readme = "README.md"
-authors = [{name = "Eng. Dawood", email = "eng.dawood@example.com"}]
+authors = [{name = "Eng. Dawood", email = "davidhormos@gmail.com"}]
 license = {text = "AGPL-3.0-or-later"}
 requires-python = ">=3.9"
 classifiers = [
@@ -81,14 +81,16 @@ Homepage = "https://github.com/EngDawood/yemenhr-rss-bot"
 Source = "https://github.com/EngDawood/yemenhr-rss-bot"
 Issues = "https://github.com/EngDawood/yemenhr-rss-bot/issues"
 
-[tool.setuptools.dynamic]
-version = {attr = "version.__version__"}
+[tool.hatch.version]
+path = "src/version.py"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
 
-[tool.setuptools.package-dir]
-yemenhr = "src"
-
-[tool.setuptools-declarative-requirements]
-requirements-files = ["requirements.txt"]
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/requirements.txt",
+    "/README.md",
+    "/LICENSE"
+]
