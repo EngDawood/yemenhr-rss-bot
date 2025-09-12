@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Set up QEMU
@@ -33,14 +33,14 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/rss-to-telegram
+          images: ${{ secrets.DOCKER_USERNAME }}/yemenhr-rss-bot
           flavor: latest=false
           tags: |
             type=ref,event=branch
             type=pep440,pattern={{version}}
             type=pep440,pattern={{major}}.{{minor}}
             type=pep440,pattern={{major}}
-            type=raw,value=latest,enable=${{ endsWith(github.ref, 'master') }}
+            type=raw,value=latest,enable=${{ endsWith(github.ref, 'main') }}
       - name: Push to Docker Hub
         uses: docker/build-push-action@v6
         with:
@@ -56,9 +56,9 @@ jobs:
         id: meta-exp
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/rss-to-telegram
+          images: ${{ secrets.DOCKER_USERNAME }}/yemenhr-rss-bot
           flavor: latest=false
-          tags: type=raw,value=${{ github.ref_name != 'dev' && format('{0}-', github.ref_name) || '' }}exp-deps,enable=true
+          tags: type=raw,value=${{ github.ref_name != 'main' && format('{0}-', github.ref_name) || '' }}exp-deps,enable=true
       - name: Push to Docker Hub (exp-deps)
         if: ${{ startsWith(github.ref, 'refs/heads') && github.ref_name != 'master' }}
         uses: docker/build-push-action@v6
@@ -82,4 +82,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ secrets.DOCKER_USERNAME }}/rss-to-telegram
+          repository: ${{ secrets.DOCKER_USERNAME }}/yemenhr-rss-bot
