@@ -1,7 +1,7 @@
 {
     "name": "yemenhr rss bot",
     "description": "A Telegram RSS bot for Yemen jobs and tenders",
-    "logo": "https://raw.githubusercontent.com/EngDawood/yemenhr-rss-bot/dev/docs/resources/RSStT_icon.svg",
+    "logo": "https://raw.githubusercontent.com/EngDawood/yemenhr-rss-bot/main/docs/resources/RSStT_icon.svg",
     "repository": "https://github.com/EngDawood/yemenhr-rss-bot",
     "website": "https://t.me/hr_yemen",
     "keywords": [
@@ -17,7 +17,7 @@
     ],
     "env": {
         "TOKEN": {
-            "description": "Your bot token. Get it from @Yemenhrbot",
+            "description": "Your bot token. Get it from @BotFather",
             "required": true
         },
         "MANAGER": {
