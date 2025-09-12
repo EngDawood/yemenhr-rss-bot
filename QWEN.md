@@ -66,7 +66,7 @@ RSS to Telegram Bot (RSStT) is a Python-based Telegram bot that fetches RSS feed
    ```
 2. Download the sample docker-compose file:
    ```bash
-   wget https://raw.githubusercontent.com/Rongronggg9/RSS-to-Telegram-Bot/dev/docker-compose.yml.sample -O docker-compose.yml
+   wget https://raw.githubusercontent.com/EngDawood/yemenhr-rss-bot/dev/docker-compose.yml.sample -O docker-compose.yml
    ```
 3. Edit the docker-compose.yml file to fill in environment variables:
    ```bash
@@ -80,7 +80,7 @@ RSS to Telegram Bot (RSStT) is a Python-based Telegram bot that fetches RSS feed
 ### Local Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Rongronggg9/RSS-to-Telegram-Bot.git
+   git clone https://github.com/EngDawood/yemenhr-rss-bot.git
    cd RSS-to-Telegram-Bot
    ```
 2. Install dependencies:
@@ -111,7 +111,7 @@ RSS to Telegram Bot (RSStT) is a Python-based Telegram bot that fetches RSS feed
    ```
 3. Download the sample environment file:
    ```bash
-   wget https://raw.githubusercontent.com/Rongronggg9/RSS-to-Telegram-Bot/dev/.env.sample -O ~/.rsstt/.env
+   wget https://raw.githubusercontent.com/EngDawood/yemenhr-rss-bot/dev/.env.sample -O ~/.rsstt/.env
    ```
 4. Edit the .env file to configure the bot:
    ```bash
