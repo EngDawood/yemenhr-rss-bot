@@ -1,4 +1,4 @@
-#  RSS to Telegram Bot
+#  YemenHR RSS Bot
 #  Copyright (C) 2022-2025  Rongrong <i@rong.moe>
 #
 #  This program is free software: you can redistribute it and/or modify
