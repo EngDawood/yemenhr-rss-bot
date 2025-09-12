@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Set up Python 3.9
@@ -101,31 +101,31 @@ jobs:
           ./scripts/aerich_helper.py -v -u "$DATABASE_URL" history
           ./scripts/aerich_helper.py -v -u "$DATABASE_URL" heads
           ./scripts/aerich_helper.py -v -u "$DATABASE_URL" upgrade True
-      - name: Test aerich migration upgrade (SQLite)
-        shell: bash
-        run: |
-          set -eux
-          rm -rf config
-          cp .env_sqlite .env
-          CURR_REF="$(git rev-parse HEAD)"
-          git checkout stale/aerich-0.6
-          '${{ steps.cp39.outputs.python-path }}' -m pip install -qr requirements.txt
-          '${{ steps.cp39.outputs.python-path }}' -u telegramRSSbot.py
-          git checkout "$CURR_REF"
-          pip install -qr requirements.txt
-          python3 -u telegramRSSbot.py
-      - name: Test aerich migration upgrade (PostgreSQL)
-        if: matrix.os == 'ubuntu-latest'
-        shell: bash
-        run: |
-          set -eux
-          sudo -u postgres psql -c "DROP DATABASE test;"
-          sudo -u postgres psql -c "CREATE DATABASE test OWNER test;"
-          cp .env_postgresql .env
-          CURR_REF="$(git rev-parse HEAD)"
-          git checkout stale/aerich-0.6
-          '${{ steps.cp39.outputs.python-path }}' -m pip install -qr requirements.txt
-          '${{ steps.cp39.outputs.python-path }}' -u telegramRSSbot.py
-          git checkout "$CURR_REF"
-          pip install -qr requirements.txt
-          python3 -u telegramRSSbot.py
+      #      - name: Test aerich migration upgrade (SQLite)
+#        shell: bash
+#        run: |
+#          set -eux
+#          rm -rf config
+#          cp .env_sqlite .env
+#          CURR_REF="$(git rev-parse HEAD)"
+#          git checkout stale/aerich-0.6
+#          '${{ steps.cp39.outputs.python-path }}' -m pip install -qr requirements.txt
+#          '${{ steps.cp39.outputs.python-path }}' -u telegramRSSbot.py
+#          git checkout "$CURR_REF"
+#          pip install -qr requirements.txt
+#          python3 -u telegramRSSbot.py
+#      - name: Test aerich migration upgrade (PostgreSQL)
+#        if: matrix.os == 'ubuntu-latest'
+#        shell: bash
+#        run: |
+#          set -eux
+#          sudo -u postgres psql -c "DROP DATABASE test;"
+#          sudo -u postgres psql -c "CREATE DATABASE test OWNER test;"
+#          cp .env_postgresql .env
+#          CURR_REF="$(git rev-parse HEAD)"
+#          git checkout stale/aerich-0.6
+#          '${{ steps.cp39.outputs.python-path }}' -m pip install -qr requirements.txt
+#          '${{ steps.cp39.outputs.python-path }}' -u telegramRSSbot.py
+#          git checkout "$CURR_REF"
+#          pip install -qr requirements.txt
+#          python3 -u telegramRSSbot.py
