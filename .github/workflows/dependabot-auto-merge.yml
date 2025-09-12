@@ -1,0 +1,74 @@
+name: Dependabot Auto-merge
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  repository-projects: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2.2.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Auto-approve security updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch' || contains(steps.metadata.outputs.dependency-names, 'security')
+        run: |
+          gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Auto-merge security patches and minor updates
+        if: >
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          (steps.metadata.outputs.update-type == 'version-update:semver-minor' && 
+           contains(fromJSON('["aiohttp", "tortoise-orm", "telethon", "cryptg", "feedparser"]'), steps.metadata.outputs.dependency-names))
+        run: |
+          gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Add security label for security updates
+        if: contains(steps.metadata.outputs.dependency-names, 'security') || steps.metadata.outputs.alert-state == 'OPEN'
+        run: |
+          gh pr edit "$PR_URL" --add-label "security,dependencies"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Add standard labels for regular updates
+        if: steps.metadata.outputs.update-type != 'version-update:semver-major'
+        run: |
+          gh pr edit "$PR_URL" --add-label "dependencies"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Comment on major updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-major'
+        run: |
+          gh pr comment "$PR_URL" --body "🚨 **Major version update detected!** Please review carefully for breaking changes before merging."
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  security-alerts:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' && github.event.pull_request.title contains 'security'
+    steps:
+      - name: Notify about security update
+        run: |
+          echo "Security vulnerability detected and Dependabot has created a PR to fix it."
+          echo "PR: ${{ github.event.pull_request.html_url }}"
+          echo "This PR should be reviewed and merged quickly."
