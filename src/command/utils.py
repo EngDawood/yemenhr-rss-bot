@@ -42,7 +42,7 @@ from .types import *
 from ..errors_collection import UserBlockedErrors
 from ..compat import cached_async
 
-logger = log.getLogger('RSStT.command')
+logger = log.getLogger('YemenHR.command')
 
 splitByWhitespace = re.compile(r'\s+').split
 stripInlineHeader = partial(re.compile(r'^@\w{4,}\s+').sub, '')

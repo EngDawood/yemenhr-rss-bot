@@ -1,5 +1,5 @@
 """
-RSStT db models
+YemenHR RSS Bot db models
 """
 #  RSS to Telegram Bot
 #  Copyright (C) 2021-2024  Rongrong <i@rong.moe>

@@ -33,7 +33,7 @@ from .compat import nullcontext
 
 _USER_LIKE = Union[int, str]
 
-logger = log.getLogger('RSStT.locks')
+logger = log.getLogger('YemenHR.locks')
 logger.setLevel(log.logger_level_muted)
 
 

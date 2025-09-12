@@ -64,7 +64,7 @@ ALLOW_REFERER_RE: Final[re.Pattern] = re.compile(
     re.I,
 )
 
-logger = log.getLogger('RSStT.tgraph')
+logger = log.getLogger('YemenHR.tgraph')
 
 apis: Optional[APIs] = None
 

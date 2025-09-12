@@ -33,7 +33,7 @@ from propcache import cached_property
 from .. import env, log
 from ..i18n import i18n
 
-logger = log.getLogger('RSStT.web')
+logger = log.getLogger('YemenHR.web')
 PRIVATE_NETWORKS: Final = tuple(ip_network(ip_block) for ip_block in
                                 ('127.0.0.0/8', '::1/128',
                                  # loopback is not a private network, list in here for convenience

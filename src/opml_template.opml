@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opml version="2.0">
 	<head>
-		<title>Subscriptions in RSStT</title>
-		<ownerName>RSS to Telegram Bot</ownerName>
+		<title>Subscriptions in YemenHR RSS Bot</title>
+		<ownerName>YemenHR RSS Bot</ownerName>
         <ownerId>https://github.com/EngDawood/yemenhr-rss-bot</ownerId>
 
 	</head>

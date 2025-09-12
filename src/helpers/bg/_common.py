@@ -18,4 +18,4 @@ from __future__ import annotations
 
 from logging import getLogger
 
-logger = getLogger('RSStT.helpers.bg')
+logger = getLogger('YemenHR.helpers.bg')

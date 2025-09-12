@@ -49,7 +49,7 @@ from .helpers.bg import bg
 from .helpers.queue import queued
 
 # log
-logger = log.getLogger('RSStT')
+logger = log.getLogger('YemenHR')
 
 loop = env.loop
 bot: Optional[TelegramClient] = None

@@ -37,7 +37,7 @@ from ..errors_collection import InvalidMediaErrors, ExternalMediaFetchFailedErro
 from ..web.media import construct_weserv_url_convert_to_2560, construct_weserv_url_convert_to_jpg, \
     insert_image_relay_into_weserv_url, detect_image_dimension_via_weserv
 
-logger = log.getLogger('RSStT.medium')
+logger = log.getLogger('YemenHR.medium')
 
 # TODO: separate quirks into another module
 sinaimg_sizes: Final = ('large', 'mw2048', 'mw1024', 'mw720', 'middle')

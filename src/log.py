@@ -45,7 +45,7 @@ getLogger('PIL').setLevel(logger_level_muted)
 getLogger('matplotlib').setLevel(logger_level_muted)
 getLogger('matplotlib.font_manager').setLevel(logger_level_shut_upped)
 
-_logger = getLogger('RSStT.watchdog')
+_logger = getLogger('YemenHR.watchdog')
 
 
 async def exit_handler(prerequisite: Awaitable = None):

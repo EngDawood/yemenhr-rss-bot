@@ -34,7 +34,7 @@ from .. import log
 from ..aio_helper import run_async
 from ..compat import parsing_utils_html_validator_minify, INT64_T_MAX
 
-logger = log.getLogger('RSStT.parsing')
+logger = log.getLogger('YemenHR.parsing')
 
 # noinspection SpellCheckingInspection
 SPACES: Final[str] = (

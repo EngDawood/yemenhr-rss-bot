@@ -30,7 +30,7 @@ from ..errors_collection import MediaSendFailErrors
 from .medium import Media, TypeMessage, TypeMessageMedia, VIDEO, ANIMATION, MEDIA_GROUP
 from .splitter import html_to_telegram_split
 
-logger = log.getLogger('RSStT.message')
+logger = log.getLogger('YemenHR.message')
 
 
 class MessageDispatcher:
